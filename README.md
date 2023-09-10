@@ -1,21 +1,25 @@
-# UNetBox
+[![UNetBox](https://raster.shields.io/badge/Python-3.10-magenta?style=plastic)](https://github.com/MicheleDamian/UNetBox/releases)
+[![UNetBox](https://raster.shields.io/badge/PyTorch-2.0-green?style=plastic)](https://github.com/MicheleDamian/UNetBox/releases)
+[![UNetBox](https://raster.shields.io/badge/Torchvision-0.15-blue?style=plastic)](https://github.com/MicheleDamian/UNetBox/releases)
 
----
+# UNetBox
 
 ![Network Schema](./schema.png)
 
 **UNetBox** is a PyTorch neural network for image segmentation that improves the popular UNet framework. It provides a box of techniques that are commonly used in the computer-vision field, but weren't included in UNet, in the form of plugins that can be easily enabled/disable. As for now, the following are implemented inside UNetBox:
 
-* Sigmoid linear unit (SiLU / Swish)
-* BatchNorm
-* Squeeze Excitation layer
-* Convolution Transposed
+* Sigmoid linear unit (SiLU / Swish) ([arXiv:1710.05941](https://arxiv.org/pdf/1710.05941))
+* BatchNorm ([arXiv:1502.03167](https://arxiv.org/pdf/1502.03167))
+* Squeeze Excitation layer ([arXiv:1709.01507](https://arxiv.org/pdf/1709.01507))
+* Transposed Convolution
 * Dimensional Expansion and Compression after downsampling/upsampling
 
 The goal of the project is to add more techniques, as they become available, in order to push the state-of-the-art in image segmentation.
 
 
 ## Ablation Study
+
+---
 
 In order to explore the influence of the components on UNetBox's performance, the following table shows a set of ablation studies on [Google's contrails identification dataset](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming).
 
@@ -42,3 +46,37 @@ Definitions:
 * *CT* : Convolution Transposed replaces bilinear interpolation for upsampling 
 
 A Jupyter Notebook that runs all the tests in the table is provided at [tests/contrails_ablation_study.ipynb](./tests/contrails_ablation_study.ipynb). You can refer to it as an example to use the package as well. 
+
+## Dependencies
+
+---
+
+UNetBox has been tested with the following dependencies:
+
+* Python >= 3.10
+* PyTorch >= 2.0
+* Torchvision >= 0.15
+* Timm >= 0.9
+
+## Usage
+
+---
+
+UNetBox can be downloaded by the following command:
+
+```bash
+git clone https://github.com/MicheleDamian/UNetBox.git $absolute_path_to_repo
+```
+
+Make sure that `sys.path` contains the (absolute) path to the repo and import it:
+
+```python
+import sys
+sys.path.insert(0, f'{absolute_path_to_repo}/UNetBox')
+
+from unetbox.net import UNetBox
+
+model = UNetBox()
+```
+
+
