@@ -19,7 +19,7 @@ from functools import partial
 from torchvision.ops.misc import Conv2dNormActivation, SqueezeExcitation
 
 
-class UnetBox(Module):
+class UNetBox(Module):
     r"""
 
     Args:
@@ -94,7 +94,7 @@ class UnetBox(Module):
             ]
 
             ceb = partial(
-                UnetBox.create_encoder_block,
+                UNetBox.create_encoder_block,
                 activation=activation,
                 expansion_layer=expansion_layer,
                 norm_layer=norm_layer
@@ -103,7 +103,7 @@ class UnetBox(Module):
             # Wrap encoder layer in a Squeeze Excitation block
             if se_block:
                 ceb = partial(
-                    UnetBox.create_se_block,
+                    UNetBox.create_se_block,
                     create_block_func=ceb,
                     se_ratio=4,
                     activation=activation
@@ -130,7 +130,7 @@ class UnetBox(Module):
             encoder_chns.insert(0, self.base_chn)
 
         cdb = partial(
-            UnetBox.create_decoder_block,
+            UNetBox.create_decoder_block,
             activation=activation,
             expansion_layer=expansion_layer,
             norm_layer=norm_layer,
@@ -140,7 +140,7 @@ class UnetBox(Module):
         # Wrap decoder layer in a Squeeze Excitation block
         if se_block:
             cdb = partial(
-                UnetBox.create_se_block,
+                UNetBox.create_se_block,
                 create_block_func=cdb,
                 se_ratio=4,
                 activation=activation
