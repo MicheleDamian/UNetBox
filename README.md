@@ -19,8 +19,6 @@ The goal of the project is to add more techniques, as they become available, in 
 
 ## Ablation Study
 
----
-
 In order to explore the influence of the components on UNetBox's performance, the following table shows a set of ablation studies on [Google's contrails identification dataset](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming).
 
 ![Contrails dataset example](./contrails_dataset_example.png)
@@ -49,8 +47,6 @@ A Jupyter Notebook that runs all the tests in the table is provided at [tests/co
 
 ## Dependencies
 
----
-
 UNetBox has been tested with the following dependencies:
 
 * Python >= 3.10
@@ -59,8 +55,6 @@ UNetBox has been tested with the following dependencies:
 * Timm >= 0.9
 
 ## Usage
-
----
 
 UNetBox can be downloaded by the following command:
 
@@ -78,5 +72,3 @@ from unetbox.net import UNetBox
 
 model = UNetBox()
 ```
-
-
